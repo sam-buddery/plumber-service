@@ -224,47 +224,7 @@
   .perk-title { font-size: 17px; font-weight: 700; color: white; margin-bottom: 8px; }
   .perk-desc { font-size: 14px; color: #90b4cc; line-height: 1.6; }
 
-  .calc-section {
-    background: var(--accent-light);
-    border-top: 3px solid var(--accent);
-    border-bottom: 3px solid var(--accent);
-    padding: 64px 24px;
-  }
 
-  .calc-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-
-  .calc-title {
-    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
-    color: var(--navy); letter-spacing: 1px; margin-bottom: 8px;
-  }
-
-  .calc-sub { font-size: 16px; color: var(--muted); margin-bottom: 36px; }
-
-  .calc-box {
-    background: white; border-radius: 20px; padding: 32px;
-    display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: center;
-    border: 1px solid var(--border);
-  }
-
-  .calc-input-group { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-  .calc-label { font-size: 13px; font-weight: 600; color: var(--muted); }
-
-  .calc-input {
-    font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 700; color: var(--navy);
-    width: 140px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 12px; outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .calc-input:focus { border-color: var(--accent); }
-  .calc-arrow { font-size: 28px; color: var(--accent); font-weight: 700; }
-  .calc-result { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
-
-  .calc-result-amount {
-    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
-    color: var(--accent-dark); letter-spacing: 1px; line-height: 1;
-  }
-
-  .calc-result-label { font-size: 13px; font-weight: 600; color: var(--muted); }
 
   .sam-section {
     padding: 72px 24px; max-width: 900px; margin: 0 auto;
@@ -451,24 +411,7 @@
   </div>
 </div>
 
-<div class="calc-section">
-  <div class="calc-inner">
-    <div class="calc-title">How Much Will You Save?</div>
-    <p class="calc-sub">Type in what you'd normally spend on plumbing per year and see your member savings.</p>
-    <div class="calc-box">
-      <div class="calc-input-group">
-        <div class="calc-label">Typical annual plumbing spend</div>
-        <input class="calc-input" type="number" id="spend" value="500" min="0" step="50" oninput="calcSavings()" />
-      </div>
-      <div class="calc-arrow">→</div>
-      <div class="calc-result">
-        <div class="calc-result-amount" id="saving">£100</div>
-        <div class="calc-result-label">saved after membership cost</div>
-      </div>
-    </div>
-    <p style="margin-top:20px;font-size:14px;color:var(--muted);">Membership costs £120/year. 20% of your spend minus that = your net saving.</p>
-  </div>
-</div>
+
 
 <div style="background:var(--off-white);">
   <div class="sam-section">
@@ -497,16 +440,7 @@
   <p class="cta-footer-note">No long-term contracts. Cancel any time. Serving Guildford &amp; surrounding areas.</p>
 </div>
 
-<script>
-  function calcSavings() {
-    const spend = parseFloat(document.getElementById('spend').value) || 0;
-    const net = Math.round(spend * 0.20 - 120);
-    const el = document.getElementById('saving');
-    el.textContent = (net >= 0 ? '£' : '-£') + Math.abs(net);
-    el.style.color = net >= 0 ? 'var(--accent-dark)' : '#d32f2f';
-  }
-  calcSavings();
-</script>
+
 
 </body>
 </html>
