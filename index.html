@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam's Plumbing Club — Guildford</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d2137;
+    --blue: #1565c0;
+    --sky: #e3f2fd;
+    --accent: #00bcd4;
+    --accent-dark: #0097a7;
+    --accent-darker: #006064;
+    --accent-light: #e0f7fa;
+    --white: #ffffff;
+    --off-white: #f7f9fb;
+    --text: #0d2137;
+    --muted: #5c7080;
+    --border: #dce6ef;
+    --pipe: #b0bec5;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  .hero {
+    background: var(--navy);
+    padding: 0 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pipe-row {
+    display: flex;
+    height: 18px;
+    background: repeating-linear-gradient(90deg, var(--blue) 0px, var(--blue) 60px, #0a1e30 60px, #0a1e30 62px);
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; }
+
+  .logo-icon {
+    width: 48px; height: 48px;
+    background: var(--accent);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; color: white; letter-spacing: 2px; line-height: 1;
+  }
+
+  .logo-text span { color: var(--accent); }
+
+  .nav-badge {
+    background: var(--accent);
+    color: var(--accent-darker);
+    font-size: 13px; font-weight: 700;
+    padding: 8px 18px; border-radius: 100px; letter-spacing: 0.5px;
+  }
+
+  .hero-content {
+    max-width: 760px; margin: 50px auto 0; text-align: center; padding: 0 24px;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--accent); color: var(--accent-darker);
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 100px; margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 88px);
+    color: white; line-height: 0.95; letter-spacing: 2px; margin-bottom: 20px;
+  }
+
+  .hero-title .highlight { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 18px; color: #90b4cc; line-height: 1.6;
+    max-width: 520px; margin: 0 auto 36px;
+  }
+
+  .hero-price-card {
+    display: inline-flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 20px; padding: 20px 32px; margin-bottom: 40px;
+  }
+
+  .price-main { text-align: left; }
+
+  .price-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; color: white; letter-spacing: 1px; line-height: 1;
+  }
+
+  .price-amount span { color: var(--accent); font-size: 28px; }
+
+  .price-period { font-size: 13px; color: #90b4cc; margin-top: 2px; }
+
+  .price-divider { width: 1px; height: 52px; background: rgba(255,255,255,0.2); }
+
+  .price-bonus { text-align: left; }
+
+  .price-bonus-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; color: var(--accent); line-height: 1;
+  }
+
+  .price-bonus-label { font-size: 13px; color: #90b4cc; margin-top: 2px; }
+
+  .cta-btn {
+    display: inline-block; background: var(--accent);
+    color: var(--accent-darker);
+    font-size: 17px; font-weight: 700;
+    padding: 16px 40px; border-radius: 100px; border: none; cursor: pointer;
+    text-decoration: none; letter-spacing: 0.3px;
+    transition: transform 0.15s, background 0.15s;
+  }
+
+  .cta-btn:hover { transform: translateY(-2px); background: var(--accent-dark); color: white; }
+
+  .trust-bar {
+    background: white;
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 40px;
+    display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 500; color: var(--muted);
+  }
+
+  .trust-item .dot {
+    width: 8px; height: 8px;
+    background: var(--accent); border-radius: 50%; flex-shrink: 0;
+  }
+
+  .section { padding: 72px 24px; max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px; text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 54px); text-align: center;
+    color: var(--navy); letter-spacing: 1px; line-height: 1.05; margin-bottom: 48px;
+  }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+
+  .step-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px 24px; position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .step-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 64px;
+    color: var(--accent-light); line-height: 1; position: absolute; top: 12px; right: 18px;
+  }
+
+  .step-icon { font-size: 32px; margin-bottom: 14px; }
+  .step-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .step-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .perks-bg { background: var(--navy); padding: 72px 24px; }
+  .perks-inner { max-width: 900px; margin: 0 auto; }
+
+  .perks-section-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px; text-align: center;
+  }
+
+  .perks-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 54px); text-align: center;
+    color: white; letter-spacing: 1px; line-height: 1.05; margin-bottom: 48px;
+  }
+
+  .perks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+
+  .perk-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 28px 24px; transition: border-color 0.2s;
+  }
+
+  .perk-card:hover { border-color: var(--accent); }
+  .perk-card.featured { border: 2px solid var(--accent); background: rgba(0,188,212,0.08); }
+
+  .perk-badge {
+    display: inline-block; background: var(--accent); color: var(--accent-darker);
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;
+  }
+
+  .perk-icon { font-size: 28px; margin-bottom: 14px; }
+  .perk-title { font-size: 17px; font-weight: 700; color: white; margin-bottom: 8px; }
+  .perk-desc { font-size: 14px; color: #90b4cc; line-height: 1.6; }
+
+  .calc-section {
+    background: var(--accent-light);
+    border-top: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    padding: 64px 24px;
+  }
+
+  .calc-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+
+  .calc-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
+    color: var(--navy); letter-spacing: 1px; margin-bottom: 8px;
+  }
+
+  .calc-sub { font-size: 16px; color: var(--muted); margin-bottom: 36px; }
+
+  .calc-box {
+    background: white; border-radius: 20px; padding: 32px;
+    display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+  }
+
+  .calc-input-group { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .calc-label { font-size: 13px; font-weight: 600; color: var(--muted); }
+
+  .calc-input {
+    font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 700; color: var(--navy);
+    width: 140px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 12px; outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .calc-input:focus { border-color: var(--accent); }
+  .calc-arrow { font-size: 28px; color: var(--accent); font-weight: 700; }
+  .calc-result { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+
+  .calc-result-amount {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
+    color: var(--accent-dark); letter-spacing: 1px; line-height: 1;
+  }
+
+  .calc-result-label { font-size: 13px; font-weight: 600; color: var(--muted); }
+
+  .sam-section {
+    padding: 72px 24px; max-width: 900px; margin: 0 auto;
+    display: flex; gap: 48px; align-items: center; flex-wrap: wrap;
+  }
+
+  .sam-avatar {
+    width: 180px; height: 180px; background: var(--navy);
+    border-radius: 24px; display: flex; align-items: center; justify-content: center;
+    font-size: 80px; flex-shrink: 0; border: 4px solid var(--accent); position: relative;
+  }
+
+  .sam-badge {
+    position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: var(--accent-darker);
+    font-size: 11px; font-weight: 700; white-space: nowrap;
+    padding: 5px 12px; border-radius: 100px;
+  }
+
+  .sam-text { flex: 1; min-width: 260px; }
+
+  .sam-name {
+    font-family: 'Bebas Neue', sans-serif; font-size: 42px;
+    color: var(--navy); letter-spacing: 1px; margin-bottom: 4px;
+  }
+
+  .sam-title {
+    font-size: 14px; color: var(--accent-dark); font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+  }
+
+  .sam-quote {
+    font-size: 17px; line-height: 1.7; color: var(--muted); font-style: italic;
+    border-left: 3px solid var(--accent); padding-left: 16px; border-radius: 0;
+  }
+
+  .sam-stats { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+  .sam-stat { text-align: center; }
+
+  .sam-stat-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 32px;
+    color: var(--navy); letter-spacing: 1px;
+  }
+
+  .sam-stat-label {
+    font-size: 12px; color: var(--muted); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  .cta-footer {
+    background: var(--navy); padding: 72px 24px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-footer::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0px, var(--accent) 30px, transparent 30px, transparent 34px);
+  }
+
+  .cta-footer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 70px); color: white;
+    letter-spacing: 2px; line-height: 1; margin-bottom: 16px;
+  }
+
+  .cta-footer-title span { color: var(--accent); }
+  .cta-footer-sub { font-size: 17px; color: #90b4cc; margin-bottom: 36px; }
+  .cta-footer-note { font-size: 13px; color: #5c7080; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="pipe-row"></div>
+  <div class="nav">
+    <div class="logo">
+      <div class="logo-icon">🔧</div>
+      <div>
+        <div class="logo-text">SAM'S <span>PLUMBING</span></div>
+        <div style="font-size:11px;color:#90b4cc;letter-spacing:1px;">GUILDFORD &amp; SURROUNDS</div>
+      </div>
+    </div>
+    <div class="nav-badge">Members get priority 🚰</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Introducing Sam's Club</div>
+    <div class="hero-title">Stop Panicking<br>When Pipes <span class="highlight">Go Pop.</span></div>
+    <p class="hero-sub">Join Sam's Club and you'll always have a trusted Guildford plumber on speed dial — priority booking, annual check-ups, and 20% off every job.</p>
+
+    <div class="hero-price-card">
+      <div class="price-main">
+        <div class="price-amount"><span>£</span>10</div>
+        <div class="price-period">per month · cancel anytime</div>
+      </div>
+      <div class="price-divider"></div>
+      <div class="price-bonus">
+        <div class="price-bonus-big">20% OFF</div>
+        <div class="price-bonus-label">every call-out &amp; job</div>
+      </div>
+    </div>
+
+    <br>
+    <button class="cta-btn" onclick="document.querySelector('.cta-footer').scrollIntoView({behavior:'smooth'})">Join Sam's Club Today</button>
+  </div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-item"><div class="dot"></div> Gas Safe Registered</div>
+  <div class="trust-item"><div class="dot"></div> Based in Guildford, GU1</div>
+  <div class="trust-item"><div class="dot"></div> 15+ Years Experience</div>
+  <div class="trust-item"><div class="dot"></div> 5-Star Google Reviews</div>
+  <div class="trust-item"><div class="dot"></div> No Call-Out Surcharges for Members</div>
+</div>
+
+<div class="section">
+  <div class="section-label">How it works</div>
+  <div class="section-title">Three steps to total<br>plumbing peace of mind</div>
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon">📱</div>
+      <div class="step-title">Sign Up in 2 Minutes</div>
+      <p class="step-desc">Pay just £10/month and instantly unlock your member dashboard with Sam's direct booking link.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon">📅</div>
+      <div class="step-title">Book Instantly Online</div>
+      <p class="step-desc">Use the priority booking tool to grab a slot — no waiting in a queue, no phone tag, just pick your time.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon">🔧</div>
+      <div class="step-title">Save 20% Every Job</div>
+      <p class="step-desc">Your discount is applied automatically on every call-out, repair, or installation. Big or small.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-icon">✅</div>
+      <div class="step-title">Annual Health Check</div>
+      <p class="step-desc">Once a year Sam visits to inspect your boiler, pipes, and water pressure — catching problems before they cost a fortune.</p>
+    </div>
+  </div>
+</div>
+
+<div class="perks-bg">
+  <div class="perks-inner">
+    <div class="perks-section-label">Your membership</div>
+    <div class="perks-section-title">Everything in Sam's Club</div>
+    <div class="perks-grid">
+      <div class="perk-card featured">
+        <div class="perk-badge">Most Popular Perk</div>
+        <div class="perk-icon">⚡</div>
+        <div class="perk-title">Priority Booking</div>
+        <p class="perk-desc">Skip the queue. Members get first access to Sam's calendar — even for same-day emergencies. Non-members wait; you don't.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">💸</div>
+        <div class="perk-title">20% Off Every Job</div>
+        <p class="perk-desc">Every callout, repair, part installation, and boiler service. Your discount is automatic — no codes, no hassle.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🏠</div>
+        <div class="perk-title">Annual System Check</div>
+        <p class="perk-desc">Sam visits your home once a year to inspect plumbing, boiler pressure, and pipework. Catches trouble early and keeps warranties valid.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">📲</div>
+        <div class="perk-title">Online Booking Tool</div>
+        <p class="perk-desc">See Sam's real availability and lock in a slot 24/7 — midnight leak or Sunday morning disaster, you're covered.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">📞</div>
+        <div class="perk-title">Members Hotline</div>
+        <p class="perk-desc">Direct line to Sam. No call centres, no voicemail black holes. You get a real answer from the person showing up to fix it.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">📋</div>
+        <div class="perk-title">Job History Record</div>
+        <p class="perk-desc">Every job Sam does at your property is logged. Perfect for landlords, home sales, or just knowing when the boiler was last serviced.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="calc-section">
+  <div class="calc-inner">
+    <div class="calc-title">How Much Will You Save?</div>
+    <p class="calc-sub">Type in what you'd normally spend on plumbing per year and see your member savings.</p>
+    <div class="calc-box">
+      <div class="calc-input-group">
+        <div class="calc-label">Typical annual plumbing spend</div>
+        <input class="calc-input" type="number" id="spend" value="500" min="0" step="50" oninput="calcSavings()" />
+      </div>
+      <div class="calc-arrow">→</div>
+      <div class="calc-result">
+        <div class="calc-result-amount" id="saving">£100</div>
+        <div class="calc-result-label">saved after membership cost</div>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:var(--muted);">Membership costs £120/year. 20% of your spend minus that = your net saving.</p>
+  </div>
+</div>
+
+<div style="background:var(--off-white);">
+  <div class="sam-section">
+    <div class="sam-avatar">
+      🧑‍🔧
+      <div class="sam-badge">Sam · Guildford</div>
+    </div>
+    <div class="sam-text">
+      <div class="sam-name">Meet Sam</div>
+      <div class="sam-title">Your Guildford Plumber · Gas Safe Registered</div>
+      <p class="sam-quote">"I've been fixing pipes in Guildford for over 15 years. I started Sam's Club because I was tired of people getting ripped off by emergency plumbers they'd never met. For a tenner a month, you get me — someone who knows your home and actually picks up the phone."</p>
+      <div class="sam-stats">
+        <div class="sam-stat"><div class="sam-stat-num">15+</div><div class="sam-stat-label">Years local</div></div>
+        <div class="sam-stat"><div class="sam-stat-num">500+</div><div class="sam-stat-label">Homes served</div></div>
+        <div class="sam-stat"><div class="sam-stat-num">5★</div><div class="sam-stat-label">Google rating</div></div>
+        <div class="sam-stat"><div class="sam-stat-num">GU1–5</div><div class="sam-stat-label">Coverage area</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-footer">
+  <div class="cta-footer-title">Stop Googling Plumbers<br>at <span>2am.</span></div>
+  <p class="cta-footer-sub">Join Sam's Club for £10/month. Priority booking, 20% off every job, and an annual check-up included.</p>
+  <button class="cta-btn" style="font-size:18px;padding:18px 48px;">🔧 Join Sam's Club — £10/mo</button>
+  <p class="cta-footer-note">No long-term contracts. Cancel any time. Serving Guildford &amp; surrounding areas.</p>
+</div>
+
+<script>
+  function calcSavings() {
+    const spend = parseFloat(document.getElementById('spend').value) || 0;
+    const net = Math.round(spend * 0.20 - 120);
+    const el = document.getElementById('saving');
+    el.textContent = (net >= 0 ? '£' : '-£') + Math.abs(net);
+    el.style.color = net >= 0 ? 'var(--accent-dark)' : '#d32f2f';
+  }
+  calcSavings();
+</script>
+
+</body>
+</html>
